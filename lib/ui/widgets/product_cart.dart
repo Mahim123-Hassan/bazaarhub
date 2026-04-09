@@ -1,8 +1,9 @@
+import 'package:bazaarhub/ui/model/product_model.dart';
 import 'package:flutter/material.dart';
+
 class productCard extends StatelessWidget {
-  const productCard({
-    super.key,
-  });
+  final Data product;
+  const productCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -13,21 +14,37 @@ class productCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12),
               child: Container(
-                height: 120,
+                height: 127,
                 child: Image.network(
-                    "https://wallpapercave.com/wp/wp4517399.jpg"
-                ),
+                    (product.img !=null && product.img.toString().startsWith('http'))?
+                    product.img.toString():'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHnoMuEe26njm1NGGqc7rJreExwijRgb5aw&s'),
               ),
             ),
-            Text("Cauliflower",style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
-            Text("Price: \$05  | QRT: 200 ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.black54),),
+            Text(
+              product.productName.toString(),
+              style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Price: \$${product.unitPrice} | QRT: ${product.qty} ",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black54,
+              ),
+            ),
             Row(
               mainAxisAlignment: .spaceEvenly,
               children: [
-                IconButton(onPressed: (){}, icon: Icon(Icons.edit,color: Colors.green,)),
-                IconButton(onPressed: (){}, icon: Icon(Icons.delete,color: Colors.red,)),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.edit, color: Colors.green),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.delete, color: Colors.red),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
