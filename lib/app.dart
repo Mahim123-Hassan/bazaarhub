@@ -1,3 +1,5 @@
+import 'package:bazaarhub/ui/screen/main_page.dart';
+import 'package:bazaarhub/ui/screen/sign_in_screen.dart';
 import 'package:bazaarhub/ui/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 class BazaarHub extends StatelessWidget {
@@ -41,6 +43,11 @@ class BazaarHub extends StatelessWidget {
 
         ),
       ),
+      routes: <String,WidgetBuilder>{
+        SplashScreen.name:(_)=>SplashScreen(),
+        SignInScreen.name:(_)=>SignInScreen(),
+        MainPage.name:(_)=> MainPage()
+      },
       home: SplashScreen(),
 
     );
