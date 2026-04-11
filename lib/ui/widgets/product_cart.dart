@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 
 class productCard extends StatelessWidget {
   final Data product;
-  const productCard({super.key, required this.product});
+  final VoidCallback onDelete;
+  // final VoidCallback onEdete;
+
+  const productCard({
+    super.key,
+    required this.product,
+    required this.onDelete,
+
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +24,11 @@ class productCard extends StatelessWidget {
               child: Container(
                 height: 127,
                 child: Image.network(
-                    (product.img !=null && product.img.toString().startsWith('http'))?
-                    product.img.toString():'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHnoMuEe26njm1NGGqc7rJreExwijRgb5aw&s'),
+                  (product.img != null &&
+                          product.img.toString().startsWith('http'))
+                      ? product.img.toString()
+                      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHnoMuEe26njm1NGGqc7rJreExwijRgb5aw&s',
+                ),
               ),
             ),
             Text(
@@ -40,7 +51,9 @@ class productCard extends StatelessWidget {
                   icon: Icon(Icons.edit, color: Colors.green),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    onDelete();
+                  },
                   icon: Icon(Icons.delete, color: Colors.red),
                 ),
               ],
